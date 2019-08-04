@@ -3,6 +3,8 @@ import Types exposing(Song)
 
 import Utils exposing (..)
 import Models exposing (Model)
+import List exposing (range, map, intersperse)
+import String exposing (concat)
 
 -- Existe la funcion findSong que recibe
 -- una condicion y una lista de canciones
@@ -20,27 +22,31 @@ import Models exposing (Model)
 
 -- Debería darnos la url de la cancion en base al id
 urlById : String -> List Song -> String
-urlById id songs = ""
+urlById id songs = " " -- no se me ocurre como meter la url de cada cancion
 
 -- Debería darnos las canciones que tengan ese texto en nombre o artista
 filterByName : String -> List Song -> List Song
-filterByName text songs = songs
+filterByName text songs = List.filter (nombreOArtista text) songs
+
+nombreOArtista : String -> Song -> Bool
+nombreOArtista cancionArtista unaCancion = unaCancion.name == cancionArtista || unaCancion.artist == cancionArtista
 
 -- Recibe un id y tiene que likear/dislikear una cancion
 -- switchear song.liked
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = songs
+toggleLike id songs = 
+
 
 -- Esta funcion tiene que decir si una cancion tiene
 -- nuestro like o no, por ahora funciona mal...
 -- hay que arreglarla
 isLiked : Song  -> Bool
-isLiked song = False
+isLiked song = True 
 
 -- Recibe una lista de canciones y nos quedamos solo con las que
 -- tienen un like
 filterLiked : List Song -> List Song
-filterLiked songs = songs
+filterLiked songs = List.filter (map isLiked<<song) songs -- no creo que este bien...
 
 -- Agrega una cancion a la cola de reproduccion
 -- (NO es necesario preocuparse porque este una sola vez)
