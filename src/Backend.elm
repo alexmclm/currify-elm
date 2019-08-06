@@ -20,6 +20,13 @@ import String exposing (concat)
 -- de canciones y devuelve el id de la primera
 -- idFirst : List Song -> String
 
+
+
+-- song tiene{ artist: String, cover: urlImage , id: "String encriptado", liked: bool, name: string , url: url}
+
+
+
+
 -- Debería darnos la url de la cancion en base al id
 urlById : String -> List Song -> String
 urlById id songs = " " -- no se me ocurre como meter la url de cada cancion
@@ -34,19 +41,20 @@ nombreOArtista cancionArtista unaCancion = unaCancion.name == cancionArtista || 
 -- Recibe un id y tiene que likear/dislikear una cancion
 -- switchear song.liked
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = 
+toggleLike id songs = []
 
 
 -- Esta funcion tiene que decir si una cancion tiene
 -- nuestro like o no, por ahora funciona mal...
 -- hay que arreglarla
 isLiked : Song  -> Bool
-isLiked song = True 
+isLiked song = song.liked -- aparentemente deberia ser asi
+-- song tiene: 
 
 -- Recibe una lista de canciones y nos quedamos solo con las que
 -- tienen un like
 filterLiked : List Song -> List Song
-filterLiked songs = List.filter (map isLiked<<song) songs -- no creo que este bien...
+filterLiked songs = []  -- List.filter (map isLiked<<song) songs -- no creo que este bien...
 
 -- Agrega una cancion a la cola de reproduccion
 -- (NO es necesario preocuparse porque este una sola vez)
