@@ -20,16 +20,14 @@ import String exposing (concat)
 -- de canciones y devuelve el id de la primera
 -- idFirst : List Song -> String
 
-
-
--- song tiene{ artist: String, cover: urlImage , id: "String encriptado", liked: bool, name: string , url: url}
-
-
-
-
 -- Debería darnos la url de la cancion en base al id
 urlById : String -> List Song -> String
-urlById id songs = " " -- no se me ocurre como meter la url de cada cancion
+urlById id songs = (List.filter (id == idCancion songs) songs).url -- no se me ocurre como meter la url de cada cancion
+--filtro por aquellos que sean igual al id que tengo, pero nose como llamar al id sin mencionarlo
+
+idCancion : List Song -> List String
+idCancion songs = List.map (id) songs -- esta cagada no quiere funcionar, quiero mandarle el id a cada una de las canciones
+-- asi me devuelve una lista de ids
 
 -- Debería darnos las canciones que tengan ese texto en nombre o artista
 filterByName : String -> List Song -> List Song
@@ -49,7 +47,7 @@ toggleLike id songs = []
 -- hay que arreglarla
 isLiked : Song  -> Bool
 isLiked song = song.liked -- aparentemente deberia ser asi
--- song tiene: 
+-- song tiene:
 
 -- Recibe una lista de canciones y nos quedamos solo con las que
 -- tienen un like
