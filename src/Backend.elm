@@ -47,8 +47,7 @@ nombreOArtista cancionArtista unaCancion = unaCancion.name == cancionArtista || 
 -- Recibe un id y tiene que likear/dislikear una cancion
 -- switchear song.liked
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = []
-
+toggleLike id songs = switchear(findSong (esLaMismaId id) songs).liked 
 
 -- Esta funcion tiene que decir si una cancion tiene
 -- nuestro like o no, por ahora funciona mal...
@@ -60,7 +59,7 @@ isLiked song = song.liked -- aparentemente deberia ser asi
 -- Recibe una lista de canciones y nos quedamos solo con las que
 -- tienen un like
 filterLiked : List Song -> List Song
-filterLiked songs = List.filter isLiked songs 
+filterLiked songs = List.filter isLiked songs
 
 -- Agrega una cancion a la cola de reproduccion
 -- (NO es necesario preocuparse porque este una sola vez)
