@@ -41,13 +41,23 @@ esLaMismaId id song = id == song.id
 filterByName : String -> List Song -> List Song
 filterByName text songs = List.filter (nombreOArtista text) songs
 
+-- el switch, tendria que preguntar mañana en persona
 nombreOArtista : String -> Song -> Bool
 nombreOArtista cancionArtista unaCancion = unaCancion.name == cancionArtista || unaCancion.artist == cancionArtista
 
 -- Recibe un id y tiene que likear/dislikear una cancion
 -- switchear song.liked
+switchear : Song -> Song
+switchear song = { song | liked = not(song.liked)} --Nos devuelve la misma cancion pero con su valor de liked modificado
+
+
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = switchear(findSong (esLaMismaId id) songs).liked 
+toggleLike id songs = List.map ((switchearSinoTieneLike<<(findSong (esLaMismaId id) songs)) songs)
+
+switchearSinoTieneLike song = if (song.liked) == True then song
+                              else (switchear song)
+
+
 
 -- Esta funcion tiene que decir si una cancion tiene
 -- nuestro like o no, por ahora funciona mal...
