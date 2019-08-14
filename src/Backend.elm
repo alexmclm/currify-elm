@@ -43,7 +43,7 @@ filterByName text songs = List.filter (nombreOArtista text) songs
 
 -- el switch, tendria que preguntar mañana en persona
 nombreOArtista : String -> Song -> Bool
-nombreOArtista cancionArtista unaCancion = unaCancion.name == cancionArtista || unaCancion.artist == cancionArtista
+nombreOArtista cancionArtista unaCancion = String.contains cancionArtista (String.toLower unaCancion.name) || String.contains cancionArtista (String.toLower unaCancion.artist)
 
 -- Recibe un id y tiene que likear/dislikear una cancion
 -- switchear song.liked
@@ -52,7 +52,7 @@ switchear song = { song | liked = not(song.liked)} --Nos devuelve la misma canci
 
 
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = List.map ((switchearSinoTieneLike<<(findSong (esLaMismaId id) songs)) songs)
+toggleLike id songs = [] -- List.map ((switchearSinoTieneLike<<(findSong (esLaMismaId id) songs)) songs)
 
 switchearSinoTieneLike song = if (song.liked) == True then song
                               else (switchear song)
