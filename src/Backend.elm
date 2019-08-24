@@ -52,13 +52,15 @@ switchear song = { song | liked = not(song.liked)} --Nos devuelve la misma canci
 
 
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = map (darLike id) songs
+toggleLike id songs = List.map (darLike id) songs
 
-switchearSinoTieneLike song = if (song.liked) == True then song
-                              else (switchear song)
+switchearSinoTieneLike : Song -> Song
+switchearSinoTieneLike song = if (song.liked) == True then song else (switchear song)
 
-darLike : String -> List Song -> Song
-darLike id songs = (switchearSinoTieneLike (findSong (esLaMismaId id) songs))
+
+darLike : String -> Song -> Song
+darLike id songs = if (esLaMismaId id songs) then (switchearSinoTieneLike songs) else songs
+--(switchearSinoTieneLike (findSong (esLaMismaId id) songs))
 
 
 -- Esta funcion tiene que decir si una cancion tiene
