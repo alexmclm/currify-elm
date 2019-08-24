@@ -47,15 +47,16 @@ nombreOArtista cancionArtista unaCancion = String.contains cancionArtista (Strin
 
 -- Recibe un id y tiene que likear/dislikear una cancion
 -- switchear song.liked
-switchear : Song -> Song
-switchear song = { song | liked = not(song.liked)} --Nos devuelve la misma cancion pero con su valor de liked modificado
+--switchear : Song -> Song
+--switchear song = { song | liked= not(isLiked song)} --Nos devuelve la misma cancion pero con su valor de liked modificado
 
 
 toggleLike : String -> List Song -> List Song
 toggleLike id songs = List.map (darLike id) songs
 
 switchearSinoTieneLike : Song -> Song
-switchearSinoTieneLike song = if (song.liked) == True then song else (switchear song)
+switchearSinoTieneLike song = if isLiked song then {song | liked = False} else {song | liked = True}
+-- if isLiked song == True then song else (switchear song)
 
 
 darLike : String -> Song -> Song
